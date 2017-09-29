@@ -28,13 +28,14 @@ int sumWhile(int list[], int size){
 }
 
 
-//uses a variable length array, which is not allowed in standard c++ but is allowed in g++ (GNU c++)
+//no longer uses a variable length array, which is not allowed in standard c++ but is allowed in g++ (GNU c++)
+//standard c++ does not support notation "int array[length];" while g++ does
 int sumRecur(int list[], int size){
 
 	std::cout << "recur\n";
 	int sum = list[size-1];
-	int copyList[size-1];
-
+	int* copyList = new int[size-1];
+    
 	if(size > 1){
 		for(int i=0; i<size-1; i++){
 			copyList[i] = list[i];
@@ -48,7 +49,7 @@ int sumRecur(int list[], int size){
 
 int main(){
 	int length = 5;
-	int testList[length];
+	int* testList = new int[length];
 
 	for(int i = 0; i < length; i++){
 		testList[i] = i*2;
